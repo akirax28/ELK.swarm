@@ -2,15 +2,15 @@
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Run the latest version of the ELK (Elasticseach, Logstash, Kibana) stack with Docker and Docker-compose.
+Run tthe ELK (Elasticseach, Logstash, Kibana) stack with Docker and Docker-compose.
 
 It will give you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticseach and the visualization power of Kibana.
 
 Based on the official images:
 
-* [elasticsearch](https://registry.hub.docker.com/_/elasticsearch/)
-* [logstash](https://registry.hub.docker.com/_/logstash/)
-* [kibana](https://registry.hub.docker.com/_/kibana/)
+* [elasticsearch](https://registry.hub.docker.com/_/elasticsearch/) **version 2**
+* [logstash](https://registry.hub.docker.com/_/logstash/) **version 2**
+* [kibana](https://registry.hub.docker.com/_/kibana/) **version 4**
 
 # Requirements
 
