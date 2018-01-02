@@ -1,37 +1,48 @@
 version: '2'
 
 services:
+
   elasticsearch:
-    build: elasticsearch/
+    build:
+      context: elasticsearch/
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - docker_elk
+      - elk
+
   logstash:
-    build: logstash/
-    command: -f /etc/logstash/conf.d/
+    build:
+      context: logstash/
     volumes:
-      - ./logstash/config:/etc/logstash/conf.d
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - docker_elk
+      - elk
     depends_on:
       - elasticsearch
+
   kibana:
-    build: kibana/
+    build:
+      context: kibana/
     volumes:
-      - ./kibana/config/:/etc/kibana/
+      - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
       - "5601:5601"
     networks:
-      - docker_elk
+      - elk
     depends_on:
       - elasticsearch
 
 networks:
-  docker_elk:
+
+  elk:
     driver: bridge
