@@ -17,6 +17,10 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+      
+
+  volumes:
+    - /data/elk:/usr/share/elasticsearch/data
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.5.4
