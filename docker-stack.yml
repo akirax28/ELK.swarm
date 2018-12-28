@@ -18,7 +18,7 @@ services:
       mode: replicated
       replicas: 1
     volumes:
-      - /usr/share/elasticsearch/data
+      - /data/elk: /usr/share/elasticsearch/data
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.5.4
