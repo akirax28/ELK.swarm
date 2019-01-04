@@ -21,7 +21,7 @@ services:
       - /data/elk:/usr/share/elasticsearch/data
 
   logstash:
-    image: akirax/logtash_ifrr
+    image: akirax/logtash_ifrr:1.0
     ports:
       - "5000:5000"
       - "9600:9600"
