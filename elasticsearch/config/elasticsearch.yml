@@ -4,6 +4,8 @@
 #
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
+network.publish_host: elasticsearch
+discovery.zen.ping.unicast.hosts: ["elasticsearch"]
 
 # minimum_master_nodes need to be explicitly set when bound on a public IP
 # set to 1 to allow single node clusters
