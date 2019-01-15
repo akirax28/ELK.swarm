@@ -30,7 +30,8 @@ services:
         target: /usr/share/logstash/config/logstash.yml
       - source: logstash_pipeline
         target: /usr/share/logstash/pipeline/logstash.conf
-      - source: /etc/logstash/conf.d/pfsense2-2.grok
+      - source: pfsense.grok
+        target: /etc/logstash/conf.d/pfsense2-2.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -61,6 +62,7 @@ configs:
     file: ./elasticsearch/config/elasticsearch.yml
   logstash_config:
     file: ./logstash/config/logstash.yml
+  pfsense.grok
     file: ./logstash/config/pfsense2-2.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
