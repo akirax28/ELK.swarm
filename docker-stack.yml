@@ -62,7 +62,7 @@ configs:
     file: ./elasticsearch/config/elasticsearch.yml
   logstash_config:
     file: ./logstash/config/logstash.yml
-  pfsense.grok
+  pfsense.grok:
     file: ./logstash/config/pfsense2-2.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
