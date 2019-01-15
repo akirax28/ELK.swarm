@@ -31,7 +31,7 @@ services:
       - source: logstash_pipeline
         target: /usr/share/logstash/pipeline/logstash.conf
       - source: pfsense.grok
-        target: /etc/logstash/conf.d/pfsense2-2.grok
+        target: /etc/logstash/patterns/pfsense2-2.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
