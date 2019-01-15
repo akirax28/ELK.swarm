@@ -34,6 +34,9 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./logstash/config:/etc/logstash/conf.d
     deploy:
       mode: replicated
       replicas: 1
