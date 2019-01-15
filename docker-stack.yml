@@ -38,7 +38,6 @@ services:
       - elk
     volumes:
       - /etc/localtime:/etc/localtime
-      - ./logstash/config:/etc/logstash/conf.d
     deploy:
       mode: replicated
       replicas: 1
