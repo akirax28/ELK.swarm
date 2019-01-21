@@ -19,6 +19,7 @@ services:
       replicas: 1
     volumes:
       - /data/elk:/usr/share/elasticsearch/data
+      - /etc/localtime:/etc/localtime
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.5.4
