@@ -29,7 +29,9 @@ services:
     configs:
       #- source: logstash_config
       #  target: /usr/share/logstash/config/logstash.yml
-      - source: inputs.conf
+      - source: input.conf
+        target: /usr/share/logstash/conf
+      - source: pfsense.conf
         target: /usr/share/logstash/conf
       - source: syslog.conf
         target: /usr/share/logstash/conf
