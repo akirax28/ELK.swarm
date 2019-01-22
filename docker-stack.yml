@@ -27,20 +27,23 @@ services:
       - "5044:5044"
       - "9600:9600"
     configs:
-      - source: logstash_config
-        target: /usr/share/logstash/config/logstash.yml
-      #- source: input.conf
-      #  target: /usr/share/logstash/conf
+      #ogirinal
+      #- source: logstash_config
+      #  target: /usr/share/logstash/config/logstash.yml
+      #- source: logstash_pipeline
+      #  target: /usr/share/logstash/pipeline/logstash.conf
+      #- source: pf.grok
+      #  target: /etc/logstash/piperline/pf.grok
+      ###fim original
+      - source: input.conf
+        target: /usr/share/logstash/conf/input.conf
       #- source: pfsense.conf
       #  target: /usr/share/logstash/conf
       #- source: syslog.conf
       #  target: /usr/share/logstash/conf
       #- source: outputs.conf
       #  target: /usr/share/logstash/conf
-      - source: logstash_pipeline
-        target: /usr/share/logstash/pipeline/logstash.conf
-      - source: pf.grok
-        target: /etc/logstash/piperline/pf.grok
+      
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -69,18 +72,18 @@ configs:
   elastic_config:
     file: ./elasticsearch/config/elasticsearch.yml
 #Logstash configs
-  logstash_config:
-    file: ./logstash/config/logstash.yml
-#  input.conf:
-#    file: ./logstash/config/01-inputs.conf
-#  syslog.conf:
-#    file: ./logstash/config/10-syslog.conf
-#  pfsense.conf:
-#    file: ./logstash/config/11-pfsense.conf
-#  outputs.conf:
-#    file: ./logstash/config/30-outputs.conf
+  #logstash_config:
+   # file: ./logstash/config/logstash.yml
+  01-input.conf:
+    file: ./logstash/config/01-inputs.conf
+  10-syslog.conf:
+    file: ./logstash/config/10-syslog.conf
+  11-pfsense.conf:
+    file: ./logstash/config/11-pfsense.conf
+  30-outputs.conf:
+    file: ./logstash/config/30-outputs.conf
   pf.grok:
-    file: ./logstash/pipeline/pf.grok
+    file: ./logstash/pipeline/pfsense_2_4_2.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
 #kibana config
