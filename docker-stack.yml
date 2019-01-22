@@ -32,18 +32,17 @@ services:
       #  target: /usr/share/logstash/config/logstash.yml
       #- source: logstash_pipeline
       #  target: /usr/share/logstash/pipeline/logstash.conf
-      #- source: pf.grok
-      #  target: /etc/logstash/piperline/pf.grok
       ###fim original
-      - source: input.conf
-        target: /usr/share/logstash/conf/input.conf
-      #- source: pfsense.conf
-      #  target: /usr/share/logstash/conf
-      #- source: syslog.conf
-      #  target: /usr/share/logstash/conf
-      #- source: outputs.conf
-      #  target: /usr/share/logstash/conf
-      
+      - source: 01-input.conf
+        target: /usr/share/logstash/conf/01-input.conf
+      - source: 11-pfsense.conf
+        target: /usr/share/logstash/conf/11-pfsense.conf
+      - source: 10-syslog.conf
+        target: /usr/share/logstash/conf/10.syslog.conf
+      - source: 30-outputs.conf
+        target: /usr/share/logstash/conf/30-outputs.conf
+      - source: pfsense_2_4_2.grok
+        target: /etc/logstash/piperline/pfsense_2_4_2.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -82,7 +81,7 @@ configs:
     file: ./logstash/config/11-pfsense.conf
   30-outputs.conf:
     file: ./logstash/config/30-outputs.conf
-  pf.grok:
+  pfsense_2_4_2.grok:
     file: ./logstash/pipeline/pfsense_2_4_2.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
