@@ -36,7 +36,7 @@ services:
       #- source: syslog.conf
       #  target: /usr/share/logstash/conf
       #- source: outputs.conf
-        target: /usr/share/logstash/conf
+      #  target: /usr/share/logstash/conf
       - source: logstash_pipeline
         target: /usr/share/logstash/pipeline/logstash.conf
       - source: pf.grok
