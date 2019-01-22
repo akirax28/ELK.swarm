@@ -68,7 +68,7 @@ configs:
 ##elasticsearsh configs
 #  elastic_config:
  #   file: ./elasticsearch/config/elasticsearch.yml
-Logstash configs
+#Logstash configs
   logstash_config:
     file: ./logstash/config/logstash.yml
 #  input.conf:
