@@ -35,8 +35,8 @@ services:
         target: /usr/share/logstash/conf
       - source: outputs.conf
         target: /usr/share/logstash/conf
-      - source: logstash_pipeline
-        target: /usr/share/logstash/pipeline/logstash.conf
+      #- source: logstash_pipeline
+      #  target: /usr/share/logstash/pipeline/logstash.conf
       - source: pfsense.grok
         target: /etc/logstash/piperline/pfsense2-2.grok
     environment:
