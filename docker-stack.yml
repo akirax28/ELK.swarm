@@ -66,8 +66,8 @@ services:
 
 configs:
 ##elasticsearsh configs
-  elastic_config:
-    file: ./elasticsearch/config/elasticsearch.yml
+#  elastic_config:
+ #   file: ./elasticsearch/config/elasticsearch.yml
 Logstash configs
   logstash_config:
     file: ./logstash/config/logstash.yml
@@ -78,7 +78,7 @@ Logstash configs
 #  pfsense.conf:
 #    file: ./logstash/config/11-pfsense.conf
 #  outputs.conf:
-    file: ./logstash/config/30-outputs.conf
+#    file: ./logstash/config/30-outputs.conf
   pf.grok:
     file: ./logstash/pipeline/pf.grok
   logstash_pipeline:
