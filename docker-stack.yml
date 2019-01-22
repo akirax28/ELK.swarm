@@ -66,8 +66,8 @@ services:
 
 configs:
 ##elasticsearsh configs
-#  elastic_config:
- #   file: ./elasticsearch/config/elasticsearch.yml
+  elastic_config:
+    file: ./elasticsearch/config/elasticsearch.yml
 #Logstash configs
   logstash_config:
     file: ./logstash/config/logstash.yml
