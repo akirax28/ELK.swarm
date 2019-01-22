@@ -27,18 +27,18 @@ services:
       - "5044:5044"
       - "9600:9600"
     configs:
-      #- source: logstash_config
-      #  target: /usr/share/logstash/config/logstash.yml
-      - source: input.conf
+      - source: logstash_config
+        target: /usr/share/logstash/config/logstash.yml
+      #- source: input.conf
+      #  target: /usr/share/logstash/conf
+      #- source: pfsense.conf
+      #  target: /usr/share/logstash/conf
+      #- source: syslog.conf
+      #  target: /usr/share/logstash/conf
+      #- source: outputs.conf
         target: /usr/share/logstash/conf
-      - source: pfsense.conf
-        target: /usr/share/logstash/conf
-      - source: syslog.conf
-        target: /usr/share/logstash/conf
-      - source: outputs.conf
-        target: /usr/share/logstash/conf
-      #- source: logstash_pipeline
-      #  target: /usr/share/logstash/pipeline/logstash.conf
+      - source: logstash_pipeline
+        target: /usr/share/logstash/pipeline/logstash.conf
       - source: pf.grok
         target: /etc/logstash/piperline/pf.grok
     environment:
@@ -68,21 +68,21 @@ configs:
 ##elasticsearsh configs
   elastic_config:
     file: ./elasticsearch/config/elasticsearch.yml
-#Logstash configs
-#  logstash_config:
-#    file: ./logstash/config/logstash.yml
-  input.conf:
-    file: ./logstash/config/01-inputs.conf
-  syslog.conf:
-    file: ./logstash/config/10-syslog.conf
-  pfsense.conf:
-    file: ./logstash/config/11-pfsense.conf
-  outputs.conf:
+Logstash configs
+  logstash_config:
+    file: ./logstash/config/logstash.yml
+#  input.conf:
+#    file: ./logstash/config/01-inputs.conf
+#  syslog.conf:
+#    file: ./logstash/config/10-syslog.conf
+#  pfsense.conf:
+#    file: ./logstash/config/11-pfsense.conf
+#  outputs.conf:
     file: ./logstash/config/30-outputs.conf
   pf.grok:
     file: ./logstash/pipeline/pf.grok
-#  logstash_pipeline:
-#    file: ./logstash/pipeline/logstash.conf
+  logstash_pipeline:
+    file: ./logstash/pipeline/logstash.conf
 #kibana config
   kibana_config:
     file: ./kibana/config/kibana.yml
