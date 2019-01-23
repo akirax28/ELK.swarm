@@ -42,7 +42,7 @@ services:
       #- source: 30-outputs.conf
       #  target: /etc/logstash/conf.d/30-outputs.conf
       - source: pfsense_2_4_2.grok
-        target: /etc/logstash/conf.d/pfsense_2_4_2.grok
+        target: /etc/logstash/conf.d/pfsense.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -81,8 +81,8 @@ configs:
   #  file: ./logstash/config/11-pfsense.conf
   #30-outputs.conf:
   #  file: ./logstash/config/30-outputs.conf
-  pfsense_2_4_2.grok:
-    file: ./logstash/pipeline/pfsense_2_4_2.grok
+  pfsense.grok:
+    file: ./logstash/pipeline/pfsense.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
 #kibana config
