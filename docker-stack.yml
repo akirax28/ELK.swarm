@@ -42,7 +42,7 @@ services:
       #- source: 30-outputs.conf
       #  target: /etc/logstash/conf.d/30-outputs.conf
       - source: pfsense.grok
-        target: /etc/logstash/conf.d/pfsense.grok
+        target: /etc/logstash/conf.d/patterns/pfsense.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
