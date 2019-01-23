@@ -28,10 +28,10 @@ services:
       - "9600:9600"
     configs:
       #ogirinal
-      #- source: logstash_config
-      #  target: /usr/share/logstash/config/logstash.yml
-      #- source: logstash_pipeline
-      #  target: /usr/share/logstash/pipeline/logstash.conf
+      - source: logstash_config
+        target: /usr/share/logstash/config/logstash.yml
+      - source: logstash_pipeline
+        target: /usr/share/logstash/pipeline/logstash.conf
       ###fim original
       - source: 01-input.conf
         target: /etc/logstash/conf.d/01-input.conf
@@ -71,8 +71,8 @@ configs:
   elastic_config:
     file: ./elasticsearch/config/elasticsearch.yml
 #Logstash configs
-  #logstash_config:
-   # file: ./logstash/config/logstash.yml
+  logstash_config:
+    file: ./logstash/config/logstash.yml
   01-input.conf:
     file: ./logstash/config/01-inputs.conf
   10-syslog.conf:
