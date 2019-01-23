@@ -34,13 +34,13 @@ services:
       #  target: /usr/share/logstash/pipeline/logstash.conf
       ###fim original
       - source: 01-input.conf
-        target: /usr/share/logstash/conf/01-input.conf
+        target: /etc/logstash/conf.d/01-input.conf
       - source: 11-pfsense.conf
-        target: /usr/share/logstash/conf/11-pfsense.conf
+        target: /etc/logstash/conf.d/11-pfsense.conf
       - source: 10-syslog.conf
-        target: /usr/share/logstash/conf/10.syslog.conf
+        target: /etc/logstash/conf.d/10.syslog.conf
       - source: 30-outputs.conf
-        target: /usr/share/logstash/conf/30-outputs.conf
+        target: /etc/logstash/conf.d/30-outputs.conf
       - source: pfsense_2_4_2.grok
         target: /etc/logstash/piperline/pfsense_2_4_2.grok
     environment:
