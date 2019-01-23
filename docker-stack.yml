@@ -42,7 +42,7 @@ services:
       - source: 30-outputs.conf
         target: /etc/logstash/conf.d/30-outputs.conf
       - source: pfsense_2_4_2.grok
-        target: /etc/logstash/piperline/pfsense_2_4_2.grok
+        target: /etc/logstash/patterns/pfsense_2_4_2.grok
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
