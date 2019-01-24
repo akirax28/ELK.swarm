@@ -20,6 +20,10 @@ services:
     volumes:
       - /data/elk:/usr/share/elasticsearch/data
       - /etc/localtime:/etc/localtime
+    log_driver: "json-file"
+      log_opt:
+        max-size: "50m"
+        max-file: "100"
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.5.4
@@ -50,6 +54,10 @@ services:
       - elk
     volumes:
       - /etc/localtime:/etc/localtime
+    log_driver: "json-file"
+      log_opt:
+        max-size: "50m"
+        max-file: "100"
     deploy:
       mode: replicated
       replicas: 1
@@ -61,6 +69,13 @@ services:
     configs:
       - source: kibana_config
         target: /usr/share/kibana/config/kibana.yml
+    volumes:
+    - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
+    - /etc/localtime:/etc/localtime
+    log_driver: "json-file"
+      log_opt:
+        max-size: "50m"
+        max-file: "100"
     networks:
       - elk
     deploy:
