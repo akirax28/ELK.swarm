@@ -62,8 +62,7 @@ services:
       - source: kibana_config
         target: /usr/share/kibana/config/kibana.yml
     volumes:
-    - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
-    - /etc/localtime:/etc/localtime
+      - /etc/localtime:/etc/localtime
     networks:
       - elk
     deploy:
