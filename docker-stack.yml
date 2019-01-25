@@ -25,7 +25,7 @@ services:
     image: docker.elastic.co/logstash/logstash:6.5.4
     ports:
    #   - "5044:5044"
-      - "5044:5044/udp"
+      - "5000:5000/udp"
       - "9600:9600"
     configs:
       #ogirinal
