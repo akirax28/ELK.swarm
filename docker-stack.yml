@@ -91,7 +91,7 @@ configs:
     file: ./logstash/pipeline/pfsense.grok
   logstash_pipeline:
     file: ./logstash/pipeline/logstash.conf
-  logstash_winad
+  logstash_winad:
     file: ./logstash/pipeline/winad.conf
 #kibana config
   kibana_config:
