@@ -11,14 +11,14 @@ services:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
-      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      ES_JAVA_OPTS: "-Xmx512m -Xms2g"
     networks:
       - elk
     deploy:
       mode: replicated
       replicas: 1
     volumes:
-      - /data/elk:/usr/share/elasticsearch/data
+      - /var/data/elk:/usr/share/elasticsearch/data
       - /etc/localtime:/etc/localtime
     
   logstash:
@@ -48,7 +48,7 @@ services:
       - source: pfsense.grok
         target: /etc/logstash/conf.d/patterns/pfsense.grok
     environment:
-      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+      LS_JAVA_OPTS: "-Xmx512m -Xms2g"
     networks:
       - elk
     volumes:
