@@ -7,16 +7,16 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    configs:
-      - source: elastic_config
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
+    #configs:
+    #  - source: elastic_config
+    #    target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       node.name: elasticsearch
-      node.master: "true"
-      node.data: "false"
+      #node.master: "true"
+      #node.data: "false"
       #node.ingest: "false"
       cluster.name: docker-cluster
-      discovery.zen.ping.unicast.hosts: elasticsearch,elasticsearch2
+      #discovery.zen.ping.unicast.hosts: elasticsearch,elasticsearch2
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - elk
@@ -29,17 +29,14 @@ services:
 ########## node 2 ########      
   elasticsearch2:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
-    configs:
-      - source: elastic_config
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
+    #configs:
+    #  - source: elastic_config
+    #    target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
       cluster.name: docker-cluster
       node.name: elasticsearch2
-      node.master: "false"
-      node.data: "true"
-      node.ingest: "true"
-      discovery.zen.ping.unicast.hosts: elasticsearch,elasticsearch2
+      discovery.zen.ping.unicast.hosts: elasticsearch
     networks:
       - elk
     deploy:
