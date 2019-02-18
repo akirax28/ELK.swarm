@@ -12,13 +12,13 @@ services:
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
-      discovery.zen.minimum_master_nodes: 2
-      discovery.zen.ping.unicast.hosts: elasticsearch
+      #discovery.zen.minimum_master_nodes: 2
+      #discovery.zen.ping.unicast.hosts: elasticsearch
     networks:
       - elk
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 1
     volumes:
       - /data/elk:/usr/share/elasticsearch/data
       - /etc/localtime:/etc/localtime
