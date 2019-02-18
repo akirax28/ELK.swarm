@@ -7,18 +7,23 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    #configs:
-    #  - source: elastic_config
-    #    target: /usr/share/elasticsearch/config/elasticsearch.yml
+    configs:
+      - source: elastic_config
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       node.name: elasticsearch
       node.master: "true"
       node.data: "false"
       node.ingest: "false"
       cluster.name: docker-cluster
-      discovery.zen.ping.unicast.hosts: elasticsearch
+      bootstrap.memory_lock=true
+      #discovery.zen.ping.unicast.hosts: elasticsearch
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
       discovery.zen.minimum_master_nodes: 1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     networks:
       - elk
     deploy:
@@ -42,6 +47,10 @@ services:
       cluster.name: docker-cluster
       node.name: elasticsearch2
       discovery.zen.ping.unicast.hosts: elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     networks:
       - elk
     deploy:
