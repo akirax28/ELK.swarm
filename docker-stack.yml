@@ -18,6 +18,7 @@ services:
       cluster.name: docker-cluster
       #discovery.zen.ping.unicast.hosts: elasticsearch,elasticsearch2
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      discovery.zen.minimum_master_nodes: 2
     networks:
       - elk
     deploy:
