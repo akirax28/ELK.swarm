@@ -11,6 +11,10 @@ services:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
+      node.name: elasticsearch
+      node.master: "true"
+      node.data: "false"
+      node.ingest: "false"
       cluster.name=docker-cluster
       discovery.zen.ping.unicast.hosts: elasticsearch,elasticsearch2
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
