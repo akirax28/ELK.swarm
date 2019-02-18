@@ -20,7 +20,25 @@ services:
     volumes:
       - /data/elk:/usr/share/elasticsearch/data
       - /etc/localtime:/etc/localtime
-    
+      
+  elasticsearch2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
+    configs:
+      - source: elastic_config
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      - cluster.name=docker-cluster
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    networks:
+      - elk
+    deploy:
+      mode: replicated
+      replicas: 1
+    volumes:
+      - /data/elk2:/usr/share/elasticsearch/data
+      - /etc/localtime:/etc/localtime
+######################################### Elasticsearch fim ##################    
   logstash:
     image: docker.elastic.co/logstash/logstash:6.6.0
     ports:
