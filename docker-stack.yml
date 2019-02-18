@@ -11,6 +11,7 @@ services:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
+      cluster.name=docker-cluster
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - elk
@@ -27,9 +28,9 @@ services:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
-      - ES_JAVA_OPTS: "-Xmx512m -Xms512m"
-      - cluster.name=docker-cluster
-      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      cluster.name=docker-cluster
+      "discovery.zen.ping.unicast.hosts=elasticsearch"
     networks:
       - elk
     deploy:
