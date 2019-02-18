@@ -16,7 +16,7 @@ services:
       node.data: "false"
       node.ingest: "false"
       cluster.name: docker-cluster
-      bootstrap.memory_lock=true
+      bootstrap.memory_lock: "true"
       #discovery.zen.ping.unicast.hosts: elasticsearch
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
       discovery.zen.minimum_master_nodes: 1
