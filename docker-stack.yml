@@ -20,7 +20,7 @@ services:
       mode: replicated
       replicas: 1
     volumes:
-      - /data/elk:/usr/share/elasticsearch/data
+      - /var/data/elk:/usr/share/elasticsearch/data
       - /etc/localtime:/etc/localtime
     
   logstash:
